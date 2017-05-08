@@ -35,7 +35,6 @@ def get_words_in_twits(twits):
 def get_word_features(wordlist):
     wordlist = nltk.FreqDist(wordlist)
     word_features = wordlist.keys()
-    
     return word_features
 
 def extract_features(document):
@@ -55,9 +54,7 @@ def train(labeled_featuresets, estimator=nltk.ELEProbDist):
 '''
 
 word_features = get_word_features(get_words_in_twits(twits))
-
 training_set = nltk.classify.apply_features(extract_features, twits)
-
 classifier = nltk.NaiveBayesClassifier.train(training_set)
 
 print(classifier.classify(extract_features('$fb is way better than $appl')))
